@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+.tech-font {
+	font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', 'monospace';
+	font-weight: 300;
+	letter-spacing: 0.08em;
+}
