@@ -131,7 +131,7 @@ function App() {
               className="mobile-menu"
               style={{ 
                 overflow: 'hidden', 
-                backgroundColor: '#000', // solid black background
+                backgroundColor: 'rgba(10, 15, 26, 0.98)', 
                 borderTop: '1px solid rgba(20, 184, 166, 0.15)',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)'
               }}>
@@ -503,7 +503,6 @@ function App() {
   );
 }
 
-export default App;
 
 // Typewriter component for hero headline
 function Typewriter({ words, speed = 120, pause = 1200 }) {
@@ -755,6 +754,9 @@ function FixedNavbar({ sections, currentSection, setCurrentSection }) {
     </div>
   );
 }
+
+
+
 
 
 
