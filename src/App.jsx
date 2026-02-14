@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./thin-tech.css";
+import "./mobile-menu.css";
 import { FaPython, FaNodeJs, FaReact, FaDatabase, FaGitAlt, FaDocker, FaPhone, FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { SiMongodb, SiExpress, SiTensorflow, SiPytorch, SiNumpy, SiScikitlearn, SiJavascript, SiTypescript } from "react-icons/si";
 import { FaTelegramPlane } from "react-icons/fa";
@@ -500,9 +501,9 @@ function App() {
         </div>
       </footer>
     </div>
+
   );
 }
-
 
 // Typewriter component for hero headline
 function Typewriter({ words, speed = 120, pause = 1200 }) {
@@ -539,6 +540,8 @@ function Typewriter({ words, speed = 120, pause = 1200 }) {
     </span>
   );
 }
+
+export default App;
 
 // AnimatedSkillBar component for visual skill proficiency
 function AnimatedSkillBar({ name, icon, percent, color }) {
@@ -754,11 +757,3 @@ function FixedNavbar({ sections, currentSection, setCurrentSection }) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
