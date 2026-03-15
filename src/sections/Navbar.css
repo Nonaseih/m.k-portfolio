@@ -1,0 +1,23 @@
+/* nb-link-active: forces white on the active pill */
+.nb-link-active {
+  color: #fff !important;
+}
+
+/* Hover: inactive pills get a subtle highlight */
+.nb-pill-btn:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Hover underline: slide in the red underline on hover */
+.nb-pill-btn-hover-underline:hover > span:last-child {
+  transform: scaleX(1) !important;
+}
+
+/* Delta / Deltaheads font — drop the file into public/fonts/ */
+@font-face {
+  font-family: 'Delta';
+  src: url('/fonts/Deltaheads.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

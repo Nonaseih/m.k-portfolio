@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 /* Split logo animation */
 .split-logo {
   letter-spacing: 0.2em;
@@ -25,10 +27,62 @@
     transform: translateY(0);
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 .thin-tech {
   font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', monospace;
   font-weight: 400;
   letter-spacing: 0.04em;
+}
+
+/* ── Glass Nav Button ──────────────────────────────────────────────────────── */
+.glass-nav-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  color: #94a3b8;
+  overflow: hidden;
+  background: transparent;
+  transition: color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.glass-nav-btn:hover {
+  color: #bfdbfe;
+  border-color: rgba(96, 165, 250, 0.32);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(96, 165, 250, 0.1);
+}
+.glass-nav-active {
+  color: #93c5fd !important;
+  border-color: rgba(96, 165, 250, 0.42) !important;
+  background: rgba(96, 165, 250, 0.07) !important;
+  box-shadow:
+    0 0 14px rgba(96, 165, 250, 0.16),
+    0 2px 8px rgba(96, 165, 250, 0.08) !important;
+}
+.glass-nav-svg {
+  background: hsl(0 0% 100% / 0.04);
+  backdrop-filter: var(--filter-id, blur(8px)) saturate(1.2);
+  box-shadow:
+    0 0 2px 1px color-mix(in oklch, white, transparent 65%) inset,
+    0 0 10px 4px color-mix(in oklch, white, transparent 88%) inset;
+}
+.glass-nav-fallback {
+  background: rgba(96, 165, 250, 0.05);
+  backdrop-filter: blur(12px) saturate(1.6) brightness(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.6) brightness(1.1);
+  border: 1px solid rgba(96, 165, 250, 0.14);
+}
+@media (prefers-color-scheme: dark) {
+  .glass-nav-fallback {
+    background: rgba(96, 165, 250, 0.06);
+  }
 }

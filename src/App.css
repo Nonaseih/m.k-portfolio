@@ -1,42 +1,222 @@
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
+
+/* ── Root reset ───────────────────────────────────────────────────────────── */
+/* Remove Vite boilerplate — #root must never constrain full-bleed sections  */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ── Global base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Typography util ──────────────────────────────────────────────────────── */
+.tech-font {
+  font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', monospace;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+
+/* ── Available dot pulse (About section) ─────────────────────────────────── */
+@keyframes availPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(224,17,17,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(224,17,17,0); }
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1);    }
+  50%       { opacity: 0.8; transform: scaleY(1.15); }
+}
+
+#hero a.cta-primary:hover {
+  background:  #cc0f0f;
+  box-shadow:  0 0 28px rgba(224,17,17,0.5);
+  transform:   translateY(-1px);
+}
+
+#hero a.cta-secondary:hover {
+  color:        #fff;
+  border-color: rgba(255,255,255,0.45);
+}
+
+@media (max-width: 768px) {
+  #hero .name-wrap {
+    height: clamp(130px, 30vw, 210px);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* ── About ────────────────────────────────────────────────────────────────── */
+/* Responsive bento grid collapse */
+@media (max-width: 860px) {
+  /* Grid 1: 3-col → 2-col, hero card spans full width */
+  #about [style*="1.4fr 0.8fr 0.8fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  #about [style*="1.4fr 0.8fr 0.8fr"] > div:first-child {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  /* Grid 2: 2-col → 1-col */
+  #about [style*="grid"][style*="1fr 1fr"] {
+    grid-template-columns: 1fr !important;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 560px) {
+  #about [style*="1.4fr 0.8fr 0.8fr"] {
+    grid-template-columns: 1fr !important;
   }
 }
 
-.card {
-  padding: 2em;
+/* ── Navbar — available-dot pulse ────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,245,196,0.4); }
+  50%       { opacity: 0.7; box-shadow: 0 0 0 4px rgba(0,245,196,0); }
 }
 
-.read-the-docs {
-  color: #888;
+/* ── Experience — ONLY section with bg effect ────────────────────────────── */
+/*
+  All other sections (hero, about, projects, contact) have their own
+  solid #0a0101 backgrounds set inline. Experience gets the special
+  treatment: a subtle red-veined dark background to set it apart.
+*/
+#experience {
+  position: relative;
+  background: #0a0101;
+  isolation: isolate;
+}
+
+/* Red grid lines — same motif as the About section cards */
+
+/* Radial red glow — centred, bleeds toward edges */
+#experience::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(224,17,17,0.07) 0%,
+    transparent 70%
+  );
+}
+
+/* All direct children sit above the pseudo-elements */
+#experience > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Contact section — same bg treatment as Experience ───────────────────── */
+#contact {
+  position: relative;
+  background: #0a0101;
+  isolation: isolate;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;          /* above section bg, below content */
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(224,17,17,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(224,17,17,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+#contact::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;          /* above section bg, below content */
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(224,17,17,0.08) 0%,
+    transparent 70%
+  );
+}
+
+/* Content must sit above both pseudo-elements */
+#contact > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Same fix for Experience so it stays consistent */
+#experience::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(224,17,17,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(224,17,17,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+#experience::after {
+  z-index: 1;
+}
+
+#experience > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Skills ticker ────────────────────────────────────────────────────────── */
+@keyframes skillsTicker {
+  from { transform: translateX(0);    }
+  to   { transform: translateX(-50%); }
+}
+
+#skills [style*="skillsTicker"]:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 900px) {
+  #skills .grid  { grid-template-columns: 1fr 1fr !important; }
+  #skills .stats { grid-template-columns: 1fr 1fr !important; }
+  #skills .copy  { grid-template-columns: 1fr !important;     }
+}
+@media (max-width: 560px) {
+  #skills .grid  { grid-template-columns: 1fr !important; }
+  #skills .stats { grid-template-columns: 1fr !important; }
+}
+
+/* ── Cursor (TargetCursor) ────────────────────────────────────────────────── */
+/* mix-blend-mode: difference is set on .target-cursor-wrapper in its own CSS */
+
+/* ── Utility: smooth hover underline for nav links ───────────────────────── */
+.nb-link-btn:hover::after {
+  transform: scaleX(1) !important;
+}
+
+/* ── Framer Motion: prevent layout shift on initial hidden state ─────────── */
+[data-framer-motion-optimized] {
+  will-change: transform, opacity;
 }

@@ -1,9 +1,58 @@
-@import "tailwindcss";
+/* ── Skills ticker animation & responsive styles ── */
+@keyframes skillsTicker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
+#skills [style*="skillsTicker"]:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 900px) {
+  #skills .grid  { grid-template-columns: 1fr 1fr !important; }
+  #skills .stats { grid-template-columns: 1fr 1fr !important; }
+  #skills .copy  { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 560px) {
+  #skills .grid  { grid-template-columns: 1fr !important; }
+  #skills .stats { grid-template-columns: 1fr !important; }
+}
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
 
 .tech-font {
 	font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', 'monospace';
 	font-weight: 300;
 	letter-spacing: 0.08em;
+}
+
+/* Compressa VF font-face for TextPressure component */
+@font-face {
+  font-family: 'Compressa VF';
+  src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* ── Hero section ── */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 0.8; transform: scaleY(1.15); }
+}
+
+#hero a.cta-primary:hover {
+  background: #cc0f0f;
+  box-shadow: 0 0 28px rgba(224,17,17,0.5);
+  transform: translateY(-1px);
+}
+
+#hero a.cta-secondary:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.45);
+}
+
+@media (max-width: 768px) {
+  #hero .name-wrap {
+    height: clamp(130px, 30vw, 210px);
+  }
 }
